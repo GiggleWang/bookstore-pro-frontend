@@ -1,0 +1,74 @@
+#Account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 650px;
+  margin: 120px auto 50px;
+  border-radius: 15px;
+  backdrop-filter: blur(1.5px);
+  background: linear-gradient(120deg, rgba(238, 151, 255, 0.548), rgba(125, 164, 255, 0.605));
+}
+
+#Account-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 50px 0 20px;
+}
+
+#Account-username {
+  width: 240px;
+}
+
+#Account-photo {
+  width: 100px;
+  height: 100px;
+  border: black 2px solid;
+  border-radius: 54px;
+  margin-right: 40px;
+}
+
+.Account-input {
+  width: 100%;
+  margin: 10px auto;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid rgb(99, 61, 42);
+  border-radius: 5px;
+  background-color: rgba(166, 53, 223, 0.232);
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  outline: none;
+  transition: all 0.1s;
+}
+
+.Account-input:focus {
+  box-shadow: 0 0 12px rgb(76, 15, 111);
+}
+
+#Account-operation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.Account-operation-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(13, 0, 255, 0.996);
+  color: white;
+  font-size: 15px;
+  transition: all 0.2s;
+}
+
+.Account-operation-button:hover {
+  background-color: rgb(53, 43, 255);
+  cursor: pointer;
+}
+

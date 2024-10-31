@@ -1,0 +1,358 @@
+#Cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 90%;
+  margin: 120px auto 50px;
+  border-radius: 15px;
+  backdrop-filter: blur(1.5px);
+  background: linear-gradient(120deg, rgba(27, 55, 121, 0.861), rgba(92, 29, 104, 0.758));
+}
+
+#Cart-title {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px 40px;
+  margin: 0;
+  color: white;
+  font: 18px 微软雅黑;
+}
+
+.Cart-line {
+  width: 95%;
+  height: 0;
+  margin: 0 auto;
+  border: none;
+  border-top: 1px solid rgba(143, 143, 143, 0.724);
+}
+
+#Cart-ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.Cart-li {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: all 0.2s;
+  visibility: hidden;
+}
+
+.Cart-li:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.Cart-bookInfo {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 50px;
+}
+
+.Cart-cover {
+  width: 100px;
+  height: 144px;
+  margin: 0 40px 0 20px;
+  border: 1px solid white;
+  border-radius: 10px;
+  box-shadow: -1.5px 1.5px 2.5px 2px black;
+}
+
+.Cart-li-flex {
+  display: flex;
+  height: 120px;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.Cart-title {
+  color: rgb(255, 255, 255);
+  font: 22px 微软雅黑;
+}
+
+.Cart-author {
+  color: rgb(3, 255, 200);
+  font: 15px 微软雅黑;
+}
+
+.Cart-price {
+  color: rgb(0, 255, 72);
+  font: 20px 微软雅黑;
+}
+
+.Cart-buynow {
+  margin: auto 8px auto 40px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 40px;
+  background-color: rgb(251, 0, 255);
+  color: white;
+  font: 15px 微软雅黑;
+  transition: all 0.1s;
+}
+
+.Cart-buynow:hover {
+  transform: scale(1.02);
+  background-color: rgb(187, 0, 255);
+  cursor: pointer;
+}
+
+.Cart-buynow:active {
+  transform: scale(0.98);
+  background-color: rgb(181, 0, 184);
+  cursor: pointer;
+}
+
+.Cart-remove {
+  margin: auto 40px auto 8px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 40px;
+  background-color: rgb(0, 128, 255);
+  color: white;
+  font: 15px 微软雅黑;
+  transition: all 0.1s;
+}
+
+.Cart-remove:hover {
+  transform: scale(1.02);
+  background-color: rgb(0, 68, 255);
+  cursor: pointer;
+}
+
+.Cart-remove:active {
+  transform: scale(0.98);
+  background-color: rgb(25, 140, 255);
+  cursor: pointer;
+}
+
+.Cart-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Cart-count-button {
+  border: none;
+  color: rgb(180, 180, 180);
+  font: 30px 微软雅黑;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.Cart-count-button:hover {
+  color: rgb(207, 203, 255);
+  cursor: pointer;
+}
+
+.Cart-count-button:active {
+  color: rgb(178, 172, 255);
+  cursor: pointer;
+}
+
+.Cart-count-value {
+  margin: 0 10px;
+  color: white;
+  font: 20px 微软雅黑;
+}
+
+#Cart-pageShift-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px 0;
+  width: 100%;
+  padding: 0 60px;
+  box-sizing: border-box;
+}
+
+#Cart-pageShift {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Cart-pageShift-button {
+  margin: 0 10px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(180, 180, 180);
+  font: 15px 微软雅黑;
+  transition: all 0.1s;
+}
+
+.Cart-pageShift-button:hover {
+  color: rgb(207, 203, 255);
+  cursor: pointer;
+}
+
+.Cart-pageShift-button:active {
+  color: rgb(178, 172, 255);
+  cursor: pointer;
+}
+
+#Cart-pageShift-text {
+  color: rgb(255, 255, 255);
+  font: 15px 微软雅黑;
+}
+
+#Cart-operation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 60px;
+}
+
+#Cart-remove {
+  margin: 0 40px;
+  padding: 20px 50px;
+  border: none;
+  border-radius: 40px;
+  background: linear-gradient(to right, rgba(152, 108, 255, 0.732), rgba(88, 202, 255, 0.766));
+  color: white;
+  font: 25px 微软雅黑;
+  transition: all 0.1s;
+}
+
+#Cart-remove:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+#Cart-remove:active {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+#Cart-buy {
+  margin: 0 40px;
+  padding: 20px 50px;
+  border: none;
+  border-radius: 40px;
+  background: linear-gradient(to right, rgba(255, 75, 75, 0.856), rgba(177, 87, 207, 0.816));
+  color: white;
+  font: 25px 微软雅黑;
+  transition: all 0.1s;
+}
+
+#Cart-buy:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+#Cart-buy:active {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+#Cart-modal {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+#Cart-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 600px;
+  height: 400px;
+  top: calc(50% - 200px);
+  left: calc(50% - 300px);
+  border-radius: 20px;
+  background: linear-gradient(120deg, rgb(92, 29, 104), rgb(27, 55, 121));
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.Cart-modal-label {
+  color: white;
+  font-size: 15px;
+}
+
+.Cart-modal-input {
+  width: 80%;
+  margin: 10px auto 25px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid rgb(28, 21, 54);
+  border-radius: 5px;
+  background-color: rgb(47, 36, 67, 0.678);
+  color: white;
+  outline: none;
+  transition: all 0.1s;
+}
+
+.Cart-modal-input:focus {
+  box-shadow: 0 0 6px rgb(204, 135, 244);
+}
+
+#Cart-modal-operation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#Cart-modal-submit {
+  margin-right: 20px;
+  border: 0;
+  border-radius: 20px;
+  padding: 10px 30px;
+  background: linear-gradient(to right, rgb(0, 76, 151), rgb(21, 116, 0));
+  color: white;
+  font-size: 18px;
+  box-shadow: 0 0 12px rgb(14, 16, 88);
+  transition: all 0.1s;
+}
+
+#Cart-modal-submit:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+#Cart-modal-submit:active {
+  transform: scale(0.97);
+  cursor: pointer;
+}
+
+#Cart-modal-cancle {
+  margin-left: 20px;
+  border: 0;
+  border-radius: 20px;
+  padding: 10px 30px;
+  background: rgb(73, 73, 73);
+  color: rgb(216, 216, 216);
+  font-size: 18px;
+  box-shadow: 0 0 12px rgb(28, 28, 28);
+  transition: all 0.1s;
+}
+
+#Cart-modal-cancle:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+#Cart-modal-cancle:active {
+  transform: scale(0.97);
+  cursor: pointer;
+}

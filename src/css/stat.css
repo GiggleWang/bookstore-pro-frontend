@@ -1,0 +1,82 @@
+#Stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 90%;
+  margin: 120px auto 50px;
+  border-radius: 15px;
+  backdrop-filter: blur(1.5px);
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0));
+}
+
+.Stat-line {
+  width: 95%;
+  height: 0;
+  margin: 0 auto;
+  border: none;
+  border-top: 1px solid rgba(209, 209, 209, 0.724);
+}
+
+#Stat-ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.Stat-li {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: all 0.2s;
+}
+
+.Stat-li:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.Stat-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 50px;
+}
+
+.Stat-cover {
+  width: 100px;
+  height: 144px;
+  margin: 0 40px 0 20px;
+  border: 1px solid white;
+  border-radius: 10px;
+  box-shadow: -1.5px 1.5px 2.5px 2px black;
+}
+
+.Stat-li-flex1 {
+  display: flex;
+  height: 120px;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.Stat-title {
+  color: rgb(0, 0, 0);
+  font-size: 22px;
+}
+
+.Stat-author {
+  color: rgb(0, 85, 10);
+  font: 15px 微软雅黑;
+}
+
+.Stat-price {
+  color: rgb(99, 0, 0);
+  font: 20px 微软雅黑;
+}

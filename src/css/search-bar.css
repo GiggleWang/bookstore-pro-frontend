@@ -1,0 +1,49 @@
+.SearchBar {
+  display: flex;
+  position: relative;
+  width: 50%;
+  height: 45px;
+  margin: 90px auto 30px;
+  border-radius: 7px;
+  border: 2px solid rgb(103, 85, 165);
+  transition: all 0.1s;
+}
+
+.SearchBar:focus-within {
+  box-shadow: 0 0 5px rgb(220, 179, 244);
+}
+
+.SearchBar-input {
+  flex-grow: 1;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 5px 0 0 5px;
+  background-color: #3b3b559e;
+  color: white;
+  font: 15px 微软雅黑;
+  outline: none;
+  backdrop-filter: blur(1.5px);
+}
+
+.SearchBar-submit {
+  width: 45px;
+  border: 0;
+  border-radius: 0 5px 5px 0;
+  background-color: rgb(110, 29, 161);
+  background-image: url("../images/search-white.png");
+  background-position: center;
+  background-size: 45% 45%;
+  background-repeat: no-repeat;
+  transition: all 0.1s;
+}
+
+.SearchBar-submit:hover {
+  background-color: rgb(125, 46, 174);
+  background-size: 47% 47%;
+  cursor: pointer;
+}
+
+.SearchBar-button:active {
+  background-size: 43% 43%;
+  cursor: pointer;
+}

@@ -1,0 +1,228 @@
+#title {
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  color: white;
+  font: 80px 宋体;
+  letter-spacing: 30px;
+  line-height: 120px;
+  text-shadow: 0 0 30px rgb(243, 132, 255);
+  user-select: none;
+  animation-duration: 1.5s;
+  animation-name: title-enter;
+}
+
+@keyframes title-enter {
+  from {
+    left: -20%;
+  }
+
+  to {
+    left: 10%;
+  }
+}
+
+#intro {
+  position: absolute;
+  left: 8%;
+  top: 60%;
+  color: white;
+  font: 30px 楷体;
+  letter-spacing: 10px;
+  line-height: 60px;
+  text-shadow: 0 0 30px rgb(139, 135, 255);
+  user-select: none;
+  animation-duration: 2.5s;
+  animation-name: intro-enter;
+}
+
+@keyframes intro-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.entry {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 400px;
+  width: 300px;
+  top: calc(50% - 240px);
+  left: calc(75% - 150px);
+  background-color: rgba(168, 101, 152, 0.313);
+  border-radius: 15px;
+  box-shadow: -6px 6px 8px 3px rgb(16, 16, 16);
+  backdrop-filter: blur(1.5px);
+  padding: 40px;
+}
+
+.login-enter {
+  animation: login-enter 1.2s;
+}
+
+@keyframes login-enter {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: calc(75% - 150px);
+  }
+}
+
+.signup-enter {
+  top: 120%;
+}
+
+.login-in {
+  top: calc(50% - 240px);
+  animation: login-in 0.8s;
+}
+
+@keyframes login-in {
+  from {
+    top: calc(-20% - 450px);
+  }
+
+  to {
+    top: calc(50% - 240px);
+  }
+}
+
+.login-out {
+  top: calc(-20% - 450px);
+  animation: login-out 0.8s;
+}
+
+@keyframes login-out {
+  from {
+    top: calc(50% - 240px);
+  }
+
+  to {
+    top: calc(-20% - 450px);
+  }
+}
+
+.signup-in {
+  top: calc(50% - 240px);
+  animation: signup-in 0.8s;
+}
+
+@keyframes signup-in {
+  from {
+    top: 120%;
+  }
+
+  to {
+    top: calc(50% - 240px);
+  }
+}
+
+.signup-out {
+  top: 120%;
+  animation: signup-out 0.8s;
+}
+
+@keyframes signup-out {
+  from {
+    top: calc(50% - 240px);
+  }
+
+  to {
+    top: 120%;
+  }
+}
+
+.entry-title {
+  margin-bottom: 20px;
+  padding: 0;
+  color: white;
+  font-size: 30px;
+  word-spacing: 20px;
+  text-shadow: 0 0 10px lightgray;
+  user-select: none;
+}
+
+.entry-input {
+  width: 100%;
+  margin: 10px auto;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid rgb(28, 21, 54);
+  border-radius: 5px;
+  background-color: rgb(47, 36, 67, 0.678);
+  color: white;
+  outline: none;
+  transition: all 0.1s;
+}
+
+.entry-input:focus {
+  box-shadow: 0 0 6px rgb(204, 135, 244);
+}
+
+#forget {
+  border: none;
+  background: transparent;
+  color: rgb(200, 200, 200);
+  font-size: 12px;
+  user-select: none;
+}
+
+#forget:hover {
+  color: rgb(133, 139, 206);
+  cursor: pointer;
+}
+
+#forget:active {
+  color: rgb(96, 99, 125);
+  cursor: pointer;
+}
+
+.entry-submit {
+  margin: 20px auto;
+  border: 0;
+  border-radius: 20px;
+  padding: 10px 50px;
+  background: linear-gradient(to right, rgb(107, 107, 255), rgb(236, 96, 117), rgb(173, 88, 237));
+  color: white;
+  font-size: 18px;
+  box-shadow: 0 0 12px rgb(14, 16, 88);
+  transition: all 0.1s;
+}
+
+.entry-submit:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+.entry-submit:active {
+  transform: scale(0.97);
+  cursor: pointer;
+}
+
+.entry-shift {
+  margin: 10px auto;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font: 13px 微软雅黑;
+  user-select: none;
+}
+
+.entry-shift:hover {
+  color: rgb(225, 255, 211);
+  cursor: pointer;
+}
+
+.entry-shift:active {
+  color: rgb(137, 184, 115);
+  cursor: pointer;
+}

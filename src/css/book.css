@@ -1,0 +1,466 @@
+#BookInfo {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 90%;
+  height: 650px;
+  margin: 120px auto 50px;
+  border-radius: 15px;
+  backdrop-filter: blur(1.5px);
+  background: linear-gradient(120deg, rgba(92, 29, 104, 0.758), rgba(27, 55, 121, 0.861));
+}
+
+#BookInfo-cover {
+  width: 300px;
+  height: 432px;
+  margin: auto 50px;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: -5px 5px 10px 5px rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#BookInfo-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  height: 100%;
+  box-sizing: border-box;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+#BookInfo-title {
+  width: 100%;
+  padding: 0;
+  margin: 40px 0;
+  color: white;
+  font: 40px 微软雅黑;
+  text-shadow: 2px 2px 2px black;
+  text-align: left;
+}
+
+#BookInfo-author,
+#BookInfo-category,
+#BookInfo-price,
+#BookInfo-state,
+#BookInfo-sales {
+  width: 100%;
+  padding: 0;
+  margin: 10px 0;
+  color: rgb(255, 255, 255);
+  font: 20px 微软雅黑;
+  text-shadow: 1px 1px 1px black;
+  text-align: left;
+}
+
+#BookInfo-intro {
+  width: 100%;
+  margin: 20px 0;
+  color: rgb(255, 255, 255);
+  font: 15px 微软雅黑;
+  text-shadow: 0.5px 1px 1px black;
+  display: flex;
+}
+
+#Book-operation-score {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  width: 85%;
+  margin: 0 auto 50px;
+}
+
+#BookScore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 30px;
+  background: linear-gradient(120deg, rgba(201, 84, 255, 0.567), rgba(53, 212, 230, 0.459));
+  border-radius: 15px;
+  backdrop-filter: blur(1.5px);
+}
+
+#BookScore-flex {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+}
+
+#BookScore-value {
+  color: rgb(0, 255, 26);
+  font: 50px 微软雅黑;
+  margin: auto 0 20px;
+  user-select: none;
+}
+
+#BookScore-count {
+  color: white;
+  user-select: none;
+}
+
+#BookScore-star {
+  display: flex;
+  flex-direction: column;
+}
+
+.BookScore-star-flex {
+  width: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.BookScore-star-label {
+  width: 100px;
+  color: white;
+  text-align: right;
+  font: 20px 微软雅黑;
+  user-select: none;
+}
+
+.BookScore-star-bar {
+  height: 4px;
+  margin: 0 auto 0 20px;
+  background-color: white;
+}
+
+#BookOperation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: auto;
+}
+
+.BookOperation-flex {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.BookOperation-button {
+  margin: 12px 10px;
+  padding: 10px;
+  border-radius: 20px;
+  font: 20px 微软雅黑;
+  transition: all 0.1s;
+}
+
+.BookOperation-button:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.BookOperation-button:active {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+#BookOperation-buy {
+  min-width: 150px;
+  border: 2px solid white;
+  color: white;
+  background-color: rgba(255, 0, 0, 0.526);
+}
+
+#BookOperation-cart {
+  min-width: 180px;
+  background-color: rgba(0, 0, 0, 0.595);
+  color: rgb(255, 0, 0);
+  border: 2px solid rgb(255, 0, 0);
+}
+
+#BookOperation-collect {
+  min-width: 120px;
+  background: linear-gradient(to right, rgb(208, 0, 255), rgb(0, 47, 255));
+  color: rgb(255, 255, 255);
+  border: none;
+}
+
+#BookOperation-writeComment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 265px;
+  background: linear-gradient(to right, rgb(0, 59, 169), rgb(0, 173, 32));
+  border: none;
+}
+
+#BookOperation-writeComment-label {
+  color: white;
+  font: 20px 微软雅黑;
+}
+
+#BookOperation-writeStar {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.BookOperation-writeStar {
+  color: white;
+  font: 25px 微软雅黑;
+  margin: 0 3px;
+}
+
+#BookComment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin: 50px auto;
+  border-radius: 15px;
+  backdrop-filter: blur(1.5px);
+  background: linear-gradient(180deg, rgba(92, 29, 104, 0.758), rgba(27, 55, 121, 0.861));
+}
+
+#BookComment-title {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px 40px;
+  margin: 0;
+  color: white;
+  font: 18px 微软雅黑;
+}
+
+.BookComment-line {
+  width: 95%;
+  height: 0;
+  margin: 0 auto;
+  border: none;
+  border-top: 1px solid rgba(143, 143, 143, 0.724);
+}
+
+#BookComment-ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.BookComment-li {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  visibility: hidden;
+}
+
+.BookComment-flex1 {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 20px auto 15px 45px;
+}
+
+.BookComment-username {
+  color: rgb(0, 200, 255);
+  font: 15px 微软雅黑;
+}
+
+.BookComment-star {
+  margin-left: 30px;
+  color: rgb(255, 255, 255);
+  letter-spacing: 3px;
+  user-select: none;
+}
+
+.BookComment-text {
+  margin: 0 60px;
+  color: white;
+  font: 14px 微软雅黑;
+}
+
+.BookComment-flex2 {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 15px auto 20px 45px;
+}
+
+.BookComment-time {
+  color: rgb(175, 175, 175);
+  font: 13px 微软雅黑;
+}
+
+.BookComment-like {
+  color: rgb(255, 0, 0);
+  text-align: center;
+  width: 25px;
+  font-size: 20px;
+  margin-left: 20px;
+  transition: all 0.1s;
+  user-select: none;
+}
+
+.BookComment-like:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.BookComment-like-count {
+  color: white;
+  margin-right: 20px;
+  font-size: 15px;
+}
+
+.BookComment-reply {
+  border: 0;
+  background-color: transparent;
+  color: rgb(175, 175, 175);
+  font-size: 15px;
+  transition: all 0.1s;
+}
+
+.BookComment-reply:hover {
+  color: rgb(229, 229, 229);
+  cursor: pointer;
+}
+
+.BookComment-reply:active {
+  color: rgb(204, 204, 204);
+  cursor: pointer;
+}
+
+#BookComment-pageShift {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}
+
+.BookComment-pageShift-button {
+  margin: 0 10px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(180, 180, 180);
+  font: 15px 微软雅黑;
+}
+
+.BookComment-pageShift-button:hover {
+  color: rgb(207, 203, 255);
+  cursor: pointer;
+}
+
+.BookComment-pageShift-button:active {
+  color: rgb(178, 172, 255);
+  cursor: pointer;
+}
+
+#BookComment-pageShift-text {
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+}
+
+
+#BookComment-modal {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+#BookComment-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  top: calc(50% - 150px);
+  left: calc(50% - 300px);
+  border-radius: 20px;
+  background: linear-gradient(120deg, rgb(27, 55, 121), rgb(92, 29, 104));
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+#BookComment-modal-input {
+  width: 80%;
+  height: 150px;
+  margin: 10px auto 30px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid rgb(28, 21, 54);
+  border-radius: 5px;
+  background-color: rgb(47, 36, 67, 0.678);
+  color: white;
+  font: 15px 微软雅黑;
+  outline: none;
+  transition: all 0.1s;
+}
+
+#BookComment-modal-input:focus {
+  box-shadow: 0 0 6px rgb(204, 135, 244);
+}
+
+#BookComment-modal-input::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+#BookComment-modal-operation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#BookComment-modal-submit {
+  margin-right: 20px;
+  border: 0;
+  border-radius: 20px;
+  padding: 10px 30px;
+  background: linear-gradient(to right, rgb(0, 76, 151), rgb(21, 116, 0));
+  color: white;
+  font-size: 18px;
+  box-shadow: 0 0 12px rgb(14, 16, 88);
+  transition: all 0.1s;
+}
+
+#BookComment-modal-submit:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+#BookComment-modal-submit:active {
+  transform: scale(0.97);
+  cursor: pointer;
+}
+
+#BookComment-modal-cancle {
+  margin-left: 20px;
+  border: 0;
+  border-radius: 20px;
+  padding: 10px 30px;
+  background: rgb(73, 73, 73);
+  color: rgb(216, 216, 216);
+  font-size: 18px;
+  box-shadow: 0 0 12px rgb(28, 28, 28);
+  transition: all 0.1s;
+}
+
+#BookComment-modal-cancle:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+#BookComment-modal-cancle:active {
+  transform: scale(0.97);
+  cursor: pointer;
+}

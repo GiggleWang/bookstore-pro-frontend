@@ -1,13 +1,34 @@
-import {useState, useRef, useEffect} from 'react'
-import {useNavigate} from 'react-router-dom'
+import { useState, useRef, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import MenuBar from '../components/menu-bar'
 import '../css/order.css'
-import {getOrder} from '../service/order'
-import {errorHandle} from '../service/util'
+import { getOrder } from '../service/order'
+import { errorHandle } from '../service/util'
 import SearchBar from '../components/search-bar'
 
 let order = []
 
+// 新增的计算总价的 API 调用
+const calculateTotalPrice = async (price, quantity) => {
+    try {
+        const response = await fetch(`http://localhost:8003/calculate/order?price=${price}&quantity=${quantity}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        console.log(response);
+        if (!response.ok) {
+            throw new Error('网络响应错误');
+        }
+
+        const data = await response.json();
+        return data; // 返回计算后的总价
+    } catch (error) {
+        console.error('计算总价时发生错误:', error);
+        return 0; // 返回0或其他合适的默认值
+    }
+}
 export default function OrderPage() {
     const [currPage, setCurrPage] = useState(1),
         [totalPage, setTotalPage] = useState(1),
@@ -15,7 +36,7 @@ export default function OrderPage() {
         [keyword, setKeyword] = useState(''),
         orderList = useRef(null),
         navigate = useNavigate(),
-        setOrderList = (list = [{
+        setOrderList = async (list = [{
             cover: '-',
             title: '-',
             author: '-',
@@ -24,30 +45,36 @@ export default function OrderPage() {
             tel: '-',
             address: '-',
             time: '-',
-            number: '-'
+            number: '-',
+            totalPrice: '¥0', // 初始化总价
         }]) => {
             let lis = orderList.current.children
             for (let li of lis) li.style.visibility = 'hidden'
-            list.forEach((item, index) => {
+            for (const item of list) {
+                const index = list.indexOf(item);
                 if (index < lis.length) {
                     let li = lis[index],
                         info = li.children[0].children,
                         info1 = info[1].children,
                         info2 = info[2].children,
-                        info3 = info[3].children
-                    li.style.visibility = 'visible'
-                    info[0].src = item.cover
-                    info1[0].innerHTML = item.title
-                    info1[1].innerHTML = item.author
-                    info1[2].innerHTML = '¥' + item.price
-                    info2[0].innerHTML = item.receiver
-                    info2[1].innerHTML = '☏' + item.tel
-                    info2[2].innerHTML = item.address
-                    info3[0].innerHTML = item.time
-                    info3[1].innerHTML = '共' + item.number + '件'
-                    info3[2].innerHTML = '¥' + item.price * item.number
+                        info3 = info[3].children;
+
+                    li.style.visibility = 'visible';
+                    info[0].src = item.cover;
+                    info1[0].innerHTML = item.title;
+                    info1[1].innerHTML = item.author;
+                    info1[2].innerHTML = '¥' + item.price;
+                    info2[0].innerHTML = item.receiver;
+                    info2[1].innerHTML = '☏' + item.tel;
+                    info2[2].innerHTML = item.address;
+                    info3[0].innerHTML = item.time;
+                    info3[1].innerHTML = '共' + item.number + '件';
+
+                    // 调用计算总价的函数
+                    const totalPrice = await calculateTotalPrice(item.price, item.number);
+                    info3[2].innerHTML = '¥' + totalPrice;
                 }
-            })
+            }
         },
         onLastPage = () => {
             if (currPage <= 1) return

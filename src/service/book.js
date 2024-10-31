@@ -26,7 +26,7 @@ export async function searchBooks(keyword, pageIndex, pageSize) {
 
 export async function getBooks(pageIndex, pageSize) {
   const books = await searchBooks('', pageIndex, pageSize);
-  console.log(books); // 输出获取到的书籍数据
+  // console.log(books); // 输出获取到的书籍数据
   return books;
 }
 

@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
+import {Modal, Input, Button, Typography, Alert} from 'antd';
 
-const AuthorModal = ({ isOpen, onClose }) => {
+const {Title, Text} = Typography;
+
+const AuthorModal = ({isOpen, onClose}) => {
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
     const [error, setError] = useState('');
 
+    // 处理查询作者请求
     const handleFetchAuthor = async () => {
         try {
-            const response = await fetch(`http://localhost:8002/author/book?title=${title}`);
+            let str;
+            str = "http://localhost:8001/author/book?title=" + title;
+            // console.log(str);
+            const response = await fetch(str);
             if (response.ok) {
-                const data = await response.json();
-                setAuthor(data.author);
+                const data = await response.text();  // 改为获取文本
+                setAuthor(data);  // 直接设置文本数据为作者
                 setError('');
             } else {
                 setAuthor('');
@@ -20,26 +27,50 @@ const AuthorModal = ({ isOpen, onClose }) => {
             setAuthor('');
             setError('请求失败，请稍后再试');
         }
+
     };
 
-    if (!isOpen) return null;
-
     return (
-        <div className="modal">
-            <div className="modal-content">
-                <span className="close" onClick={onClose}>&times;</span>
-                <h2>查找书籍作者</h2>
-                <input
-                    type="text"
+        <Modal
+            title="查找书籍作者"
+            visible={isOpen}
+            onCancel={onClose}
+            footer={null}
+            centered
+        >
+            <div style={{textAlign: 'center', marginBottom: '16px'}}>
+                <Input
                     placeholder="输入书名"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
+                    style={{marginBottom: '16px'}}
                 />
-                <button onClick={handleFetchAuthor}>查找</button>
-                {author && <p>作者: {author}</p>}
-                {error && <p style={{ color: 'red' }}>{error}</p>}
+                <Button
+                    type="primary"
+                    onClick={handleFetchAuthor}
+                    style={{width: '100%'}}
+                >
+                    查找
+                </Button>
             </div>
-        </div>
+
+            {/* 显示查询结果 */}
+            {author && (
+                <Text type="success" style={{display: 'block', textAlign: 'center', marginTop: '16px'}}>
+                    作者: {author}
+                </Text>
+            )}
+
+            {/* 错误消息 */}
+            {error && (
+                <Alert
+                    message={error}
+                    type="error"
+                    showIcon
+                    style={{marginTop: '16px'}}
+                />
+            )}
+        </Modal>
     );
 };
 

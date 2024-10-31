@@ -162,3 +162,11 @@
   font: 12px 微软雅黑;
   overflow: hidden;
 }
+
+/* home.css */
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}

@@ -125,7 +125,7 @@ export default function CartPage(props) {
                         navigate('/order')
                         return
                     }
-
+                    //ws here
                     let socket = new WebSocket(`ws://localhost:8000/placeOrder/${res.id}`)
                     socket.onopen = () => {
                         console.log('websocket open')

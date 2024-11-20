@@ -632,80 +632,90 @@ export default function ManagePage() {
         <div className='Manage-modal' onClick={() => setShowBookModal(false)}>
           <div id='ManageBook-modal-content' onClick={e => e.stopPropagation()}>
             <div id='ManageBook-modal-flex1'>
-              <input ref={coverInput} type="file" name="multipartfile" accept="image/*"
-                     onChange={onUploadCover} style={{display: 'none'}}/>
-              <img id='ManageBook-modal-cover' src={cover} alt='点击上传封面图片' onClick={() => {
-                coverInput.current.click()
-              }}/>
+              <div className='Manage-modal-label-input'>
+                <div className='Manage-modal-label'>图片 URL</div>
+                <input
+                    className='Manage-modal-input'
+                    value={cover}
+                    onChange={event => setCover(event.target.value)}
+                    placeholder="请输入图片 URL"
+                />
+              </div>
+              {/* 图片预览 */}
+              <img
+                  id='ManageBook-modal-cover'
+                  src={cover || 'https://via.placeholder.com/150'}
+                  alt='封面预览'
+              />
               <div id='ManageBook-modal-flex2'>
                 <div className='Manage-modal-label-input'>
                   <div className='Manage-modal-label'>书名</div>
                   <input
-                    ref={titleInput}
-                    className='Manage-modal-input'
-                    value={title}
-                    onChange={event => setTitle(event.target.value)}
-                    onKeyUp={onTitleInputKeyUp}
+                      ref={titleInput}
+                      className='Manage-modal-input'
+                      value={title}
+                      onChange={event => setTitle(event.target.value)}
+                      onKeyUp={onTitleInputKeyUp}
                   />
                 </div>
                 <div className='Manage-modal-label-input'>
                   <div className='Manage-modal-label'>作者</div>
                   <input
-                    ref={authorInput}
-                    className='Manage-modal-input'
-                    value={author}
-                    onChange={event => setAuthor(event.target.value)}
-                    onKeyUp={onAuthorInputKeyUp}
+                      ref={authorInput}
+                      className='Manage-modal-input'
+                      value={author}
+                      onChange={event => setAuthor(event.target.value)}
+                      onKeyUp={onAuthorInputKeyUp}
                   />
                 </div>
                 <div className='Manage-modal-label-input'>
                   <div className='Manage-modal-label'>ISBN</div>
                   <input
-                    ref={isbnInput}
-                    className='Manage-modal-input'
-                    value={isbn}
-                    onChange={event => setIsbn(event.target.value)}
-                    onKeyUp={onIsbnInputKeyUp}
+                      ref={isbnInput}
+                      className='Manage-modal-input'
+                      value={isbn}
+                      onChange={event => setIsbn(event.target.value)}
+                      onKeyUp={onIsbnInputKeyUp}
                   />
                 </div>
                 <div className='Manage-modal-label-input'>
                   <div className='Manage-modal-label'>价格</div>
                   <input
-                    ref={priceInput}
-                    className='Manage-modal-input'
-                    value={price}
-                    onChange={event => setPrice(event.target.value)}
-                    onKeyUp={onPriceInputKeyUp}
+                      ref={priceInput}
+                      className='Manage-modal-input'
+                      value={price}
+                      onChange={event => setPrice(event.target.value)}
+                      onKeyUp={onPriceInputKeyUp}
                   />
                 </div>
                 <div className='Manage-modal-label-input'>
                   <div className='Manage-modal-label'>销量</div>
                   <input
-                    ref={salesInput}
-                    className='Manage-modal-input'
-                    value={sales}
-                    onChange={event => setSales(event.target.value)}
-                    onKeyUp={onSalesInputKeyUp}
+                      ref={salesInput}
+                      className='Manage-modal-input'
+                      value={sales}
+                      onChange={event => setSales(event.target.value)}
+                      onKeyUp={onSalesInputKeyUp}
                   />
                 </div>
                 <div className='Manage-modal-label-input'>
                   <div className='Manage-modal-label'>库存</div>
                   <input
-                    ref={repertoryInput}
-                    className='Manage-modal-input'
-                    value={repertory}
-                    onChange={event => setRepertory(event.target.value)}
-                    onKeyUp={onRepertoryInputKeyUp}
+                      ref={repertoryInput}
+                      className='Manage-modal-input'
+                      value={repertory}
+                      onChange={event => setRepertory(event.target.value)}
+                      onKeyUp={onRepertoryInputKeyUp}
                   />
                 </div>
               </div>
             </div>
             <textarea
-              ref={introInput}
-              id='ManageBook-modal-intro'
-              value={intro}
-              onChange={event => setIntro(event.target.value)}
-              placeholder='书籍简介'
+                ref={introInput}
+                id='ManageBook-modal-intro'
+                value={intro}
+                onChange={event => setIntro(event.target.value)}
+                placeholder='书籍简介'
             />
             <div className='Manage-modal-operation'>
               <button className='Manage-modal-submit'

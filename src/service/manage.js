@@ -64,6 +64,7 @@ export async function setBook(id, title, author, isbn, cover, price, sales, repe
 
 export async function setUser(id, username, email) {
   let res = await post(`${apiURL}/manage/user/${id}`, { username, email })
+  console.log(res)
   if (!res.ok) throw res.message
 }
 

@@ -14,6 +14,7 @@ export async function signup(username, email, password) {
 
 export async function logout() {
   let res = await post(`${apiURL}/logout`)
+  console.log(res)
   if (!res.ok) throw res.message
   return res.data.time;
 }

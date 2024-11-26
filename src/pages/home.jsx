@@ -1,16 +1,16 @@
-import { useRef, useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import {useRef, useState, useEffect} from 'react'
+import {useNavigate} from 'react-router-dom'
 import MenuBar from '../components/menu-bar'
 import SearchBar from '../components/search-bar'
 import '../css/home.css'
-import { getBooks, searchBooks } from '../service/book'
-import { errorHandle } from '../service/util'
+import {getBooks, searchBooks} from '../service/book'
+import {errorHandle} from '../service/util'
 import AuthorModal from "../components/author_modal"
-import { Button } from 'antd'
+import {Button, Input} from 'antd'
 
 export default function HomePage() {
     const categoryList = [
-        { text: '推荐' }, { text: '热门' }, { text: '文学' }, { text: '娱乐' }, { text: '专业' }, { text: '教育' }, { text: '科普' }
+        {text: '推荐'}, {text: '热门'}, {text: '文学'}, {text: '娱乐'}, {text: '专业'}, {text: '教育'}, {text: '科普'}
     ]
 
     const category = useRef(null),
@@ -18,9 +18,10 @@ export default function HomePage() {
         [currPage, setCurrPage] = useState(1),
         [totalPage, setTotalPage] = useState(1),
         [keyword, setKeyword] = useState(''),
+        [tag, setTag] = useState(''),
         navigate = useNavigate(),
         bookList = useRef(null),
-        setBookList = (list = [{ title: '-', author: '-', price: '-', cover: '', index: '' }]) => {
+        setBookList = (list = [{title: '-', author: '-', price: '-', cover: '',tags: [],  index: ''}]) => {
             let lines = bookList.current.children,
                 lineCount = lines.length,
                 inlineBookCount = lineCount > 0 ? lines[0].children.length : 0
@@ -36,6 +37,14 @@ export default function HomePage() {
                     info[1].innerHTML = item.title
                     info[2].children[0].innerHTML = item.author
                     info[2].children[1].innerHTML = '¥' + item.price
+                    const tagsContainer = info[3]; // 假设新增了一个 tags 容器在 HTML 中
+                    tagsContainer.innerHTML = ''; // 清空之前的标签
+                    item.tags.forEach((tag) => {
+                        const tagElement = document.createElement('span');
+                        tagElement.className = 'BookDisplay-book-tag';
+                        tagElement.innerText = tag;
+                        tagsContainer.appendChild(tagElement);
+                    });
                     book.onclick = () => {
                         navigate(`/book?id=${item.id}`)
                     }
@@ -50,7 +59,7 @@ export default function HomePage() {
         onLastPage = () => {
             if (currPage <= 1) return
             setCurrPage(currPage - 1)
-            searchBooks(keyword, currPage - 2, 30).then(res => {
+            searchBooks(keyword, currPage - 2, 30, tag).then(res => {
                 setTotalPage(res.totalPage)
                 setBookList(res.list)
             }).catch(err => errorHandle(err, navigate))
@@ -58,19 +67,21 @@ export default function HomePage() {
         onNextPage = () => {
             if (currPage >= totalPage) return
             setCurrPage(currPage + 1)
-            searchBooks(keyword, currPage, 30).then(res => {
+            searchBooks(keyword, currPage, 30, tag).then(res => {
                 setTotalPage(res.totalPage)
                 setBookList(res.list)
             }).catch(err => errorHandle(err, navigate))
         },
-        onSearch = e => {
-            setKeyword(e.target.value)
-            searchBooks(e.target.value, 0, 30).then(res => {
-                setTotalPage(res.totalPage)
-                setCurrPage(1)
-                setBookList(res.list)
-            }).catch(err => errorHandle(err, navigate))
-        }
+        onSearch = (e, newTag = tag) => {
+            const newKeyword = e.target.value; // 获取搜索关键词
+            setKeyword(newKeyword); // 更新关键词状态
+
+            searchBooks(newKeyword, 0, 30, newTag).then((res) => {
+                setTotalPage(res.totalPage); // 更新总页数
+                setCurrPage(1); // 重置当前页
+                setBookList(res.list); // 更新书籍列表
+            }).catch((err) => errorHandle(err, navigate));
+        };
 
     // 初始化页面书籍列表
     useEffect(() => {
@@ -86,12 +97,26 @@ export default function HomePage() {
 
     return (
         <div>
-            <MenuBar index={0} />
+            <MenuBar index={0}/>
 
             {/* 搜索栏和按钮容器 */}
             <div className="search-container">
-                <SearchBar placeholder='请输入书籍名、作者名等关键词搜索相关书籍' keyword={keyword} onChange={onSearch} />
-                <Button type="primary" onClick={() => setIsModalOpen(true)} style={{ marginLeft: '8px' }}>
+                <SearchBar
+                    placeholder="请输入书籍名、作者名等关键词搜索相关书籍"
+                    keyword={keyword}
+                    onChange={(e) => onSearch(e)}
+                />
+                <Input
+                    placeholder="请输入标签进行搜索"
+                    value={tag}
+                    onChange={(e) => {
+                        const newTag = e.target.value; // 获取新标签
+                        setTag(newTag); // 更新标签状态
+                        onSearch({target: {value: keyword}}, newTag); // 触发搜索，传入当前 keyword 和更新后的 tag
+                    }}
+                    style={{width: '200px', marginLeft: '8px'}}
+                />
+                <Button type="primary" onClick={() => setIsModalOpen(true)} style={{marginLeft: '8px'}}>
                     查询书籍作者
                 </Button>
             </div>
@@ -120,6 +145,9 @@ export default function HomePage() {
                                             <div className='BookDisplay-book-author'>-</div>
                                             <div className='BookDisplay-book-price'>¥</div>
                                         </div>
+                                        <div className='BookDisplay-book-tags'> {/* 添加 tags 容器 */}
+                                            {/* Tags 将通过 JavaScript 动态填充 */}
+                                        </div>
                                     </li>
                                 )}
                             </ul>
@@ -135,7 +163,7 @@ export default function HomePage() {
             </div>
 
             {/* 作者查询弹窗 */}
-            <AuthorModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            <AuthorModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}/>
         </div>
     )
 }

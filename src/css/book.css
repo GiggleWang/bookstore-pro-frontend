@@ -44,7 +44,8 @@
 #BookInfo-category,
 #BookInfo-price,
 #BookInfo-state,
-#BookInfo-sales {
+#BookInfo-sales,
+#BookInfo-tag{
   width: 100%;
   padding: 0;
   margin: 10px 0;
@@ -53,7 +54,18 @@
   text-shadow: 1px 1px 1px black;
   text-align: left;
 }
-
+.BookInfo-tag-word {
+  display: inline-block; /* 每个标签为块状元素，方便设置间距 */
+  margin: 5px 8px; /* 设置上下左右的空隙 */
+  padding: 6px 12px; /* 内边距，增大标签尺寸 */
+  background-color: #5c5b5b; /* 设置淡白色背景 */
+  border-radius: 5px; /* 圆角边框 */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* 淡白色阴影 */
+  font-size: 14px; /* 字体大小 */
+  color:  rgb(255, 255, 255);
+  text-align: center; /* 文本居中 */
+  white-space: nowrap; /* 防止换行 */
+}
 #BookInfo-intro {
   width: 100%;
   margin: 20px 0;
@@ -464,3 +476,4 @@
   transform: scale(0.97);
   cursor: pointer;
 }
+

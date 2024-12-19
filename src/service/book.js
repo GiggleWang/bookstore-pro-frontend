@@ -1,34 +1,89 @@
 import {apiURL, post, get} from "./util"
 
+// export async function searchBooks(keyword, pageIndex, pageSize, tag = '') {
+//     const encodedTag = encodeURIComponent(tag); // 对标签进行 URL 编码
+//     // console.log("tag",tag);
+//     const requestURL = `${apiURL}/books?keyword=${keyword}&pageIndex=${pageIndex}&pageSize=${pageSize}&tag=${encodedTag}`;
+//     // 打印出发送的 URL
+//     // console.log('Sending request to:', requestURL);
+//     let res = await get(requestURL); // 发起请求
+//     let bookList = []
+//     res.items.forEach((item, index) => {
+//         bookList.push({
+//             id: item.id,
+//             title: item.title,
+//             author: item.author,
+//             price: (item.price / 100).toFixed(2),
+//             cover: item.cover,
+//             isbn: item.isbn,
+//             sales: item.sales,
+//             repertory: item.repertory,
+//             description: item.description,
+//             tags: item.tags || [],
+//             index: index
+//         })
+//     })
+//     return {
+//         totalNumber: res.totalNumber,
+//         totalPage: res.totalPage,
+//         list: bookList
+//     }
+// }
+
 export async function searchBooks(keyword, pageIndex, pageSize, tag = '') {
-    const encodedTag = encodeURIComponent(tag); // 对标签进行 URL 编码
-    // console.log("tag",tag);
-    const requestURL = `${apiURL}/books?keyword=${keyword}&pageIndex=${pageIndex}&pageSize=${pageSize}&tag=${encodedTag}`;
-    // 打印出发送的 URL
-    // console.log('Sending request to:', requestURL);
-    let res = await get(requestURL); // 发起请求
-    let bookList = []
-    res.items.forEach((item, index) => {
-        bookList.push({
-            id: item.id,
-            title: item.title,
-            author: item.author,
-            price: (item.price / 100).toFixed(2),
-            cover: item.cover,
-            isbn: item.isbn,
-            sales: item.sales,
-            repertory: item.repertory,
-            description: item.description,
-            tags: item.tags || [],
-            index: index
-        })
-    })
+    // GraphQL查询
+    const query = `
+    query {
+        searchBookByTitle(keyword: "${keyword}", pageIndex: ${pageIndex}, pageSize: ${pageSize}, tag: "${tag}") {
+            totalNumber
+            totalPage
+            items {
+                bookId
+                title
+                author
+                isbn
+                cover
+                description
+                price
+                sales
+                repertory
+                tags
+            }
+        }
+    }`;
+
+    const response = await fetch('http://localhost:8001/api/books/graphql', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query }),
+    });
+
+    const res = await response.json();
+    const data = res.data.searchBookByTitle;
+
+    const bookList = data.items.map((item, index) => ({
+        id: item.bookId,
+        title: item.title,
+        author: item.author,
+        price: (item.price / 100).toFixed(2), // 转换价格为元
+        cover: item.cover,
+        isbn: item.isbn,
+        sales: item.sales,
+        repertory: item.repertory,
+        description: item.description,
+        tags: item.tags || [],
+        index: index
+    }));
+
     return {
-        totalNumber: res.totalNumber,
-        totalPage: res.totalPage,
+        totalNumber: data.totalNumber,
+        totalPage: data.totalPage,
         list: bookList
-    }
+    };
 }
+
 
 export async function getBooks(pageIndex, pageSize) {
     const books = await searchBooks('', pageIndex, pageSize);
